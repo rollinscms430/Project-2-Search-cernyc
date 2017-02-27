@@ -4,10 +4,13 @@ from collections import Counter
 
 def test():
     
-    print "Be patient, this program can take few minute"
+    print "Be patience, this program can take few minutes"
     
     track = []
     sameN = []
+ 
+    newL = changeLetter("snakes")
+    newA = changeLetter("brains")
     
     word_list1 = []
     word_list2 = []
@@ -20,9 +23,6 @@ def test():
     for word in f:
         if len(word) == 7:
             sameN.append(word)
-            
-    newL = changeLetter("snakes", sameN)
-    newA = changeLetter("brains", sameN)
           
     for q in newL:
         for a in sameN:
@@ -42,7 +42,7 @@ def test():
                 
 def find_track (start_list, end_list, sameN):
     
-    iterration = 0
+    y = 0
     track = []
     start = start_list
     end = end_list
@@ -50,7 +50,7 @@ def find_track (start_list, end_list, sameN):
     visited = []
     
     found = False
-   
+    
     while found != True:
         
         for k in start:
@@ -59,72 +59,39 @@ def find_track (start_list, end_list, sameN):
                 break
             
             visited.append(k)
-            temp = changeLetter(k, sameN)
+            temp = changeLetter(k)
             
             track.append(k)
             
             for h in temp:
+                
                 if found == True:
                     break
                
                 if h not in visited:
-                    visited.append(h)
-                    if h in end_list:
-                        print 'the last word to be changed is: ' + h
-                        found = True
-                        print "success"
-                        for u in track:
-                            print u
-                        break
+                    for a in sameN:
+                        if found == True:
+                            break
+                        if h in a and h not in visited:
+                            visited.append(h)
+                            #print h
+                            temp_list.append(h)
+                            if h in end_list:
+                                print'The last word to be changed was: ' + h
+                                found = True
+                                print "success"
+                                #for u in track:
+                                    #print u
+                                break
                             #else:
                                 #if not track:
                                     #track.pop()
             
             
-        start = temp
+        start = temp_list
         #track.pop()
-    
-    '''levels = []
-    while found != True:
-        for k in start:
-            track.append(k)
-            iterration = iterration + 1
-            new_list = make_path(k, sameN)
-            while iterration < 20:
-                
-                if compare(new_list, end):
-                    found = True
-                    print "success"
-                    for p in track:
-                        print p
-                else:
-                    print iterration
-                    iterration = iterration + 1
-                    for r in new_list:
-                        track.append(r)
-                        n_list = make_path(r, sameN)
-                        
-                    new_list = n_list
-                        
-    '''        
 
-
-def make_path(word, base_list):
-    
-    new_list = changeLetter(word, base_list)
-    return new_list
-            
-
-def compare(list1, list2):
-    
-    for k in list1:
-        if k in list2:
-            return True
-        
-            
-
-
-def changeLetter(base_word, sameN):
+def changeLetter(base_word):
     
     alphabet = ("a", "b", "c", "d", "e","f","g","h","i","j","k","l"
     ,"m","n","o","p","q","r","s","t","u","v","w","x","y","z")
@@ -140,8 +107,7 @@ def changeLetter(base_word, sameN):
             
             new_word = "".join(s)
             
-            if new_word in sameN:
-                new_word_list.append(new_word)
+            new_word_list.append(new_word)
             
         s = list(base_word)
             
