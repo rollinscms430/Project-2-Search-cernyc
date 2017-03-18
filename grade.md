@@ -6,10 +6,7 @@ Looks good.
 
 ## Word Ladder
 
-Which file am I supposed to grade?
-
-I ran the one with `good` in the title and it only printed `Success`, without showing the actual ladder. I modified to print out self.track
-and that showed a list of words, but it was very long and contained several words that are more than one letter separated.
+I graded Natesh's code. When it finishes, it prints Success and the word `trains`, but not the actual ladder. I modified it to print self.track and it prints a huge list of words, some of which differ by more than one letter.
 
 -10
 
